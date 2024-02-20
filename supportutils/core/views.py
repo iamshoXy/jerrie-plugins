@@ -256,7 +256,7 @@ class ContactView(BaseView):
             self._temp_cached_users.pop(str(user.id), None)
             return
         
-        logger.info(f"Category: {data.get("category")}")
+        logger.info(data.get("category"))
 
         if view.inputs:
             option = view.inputs["contact_option"]
