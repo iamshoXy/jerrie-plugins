@@ -255,6 +255,7 @@ class ContactView(BaseView):
         if not view.value:
             self._temp_cached_users.pop(str(user.id), None)
             return
+
         if view.inputs:
             option = view.inputs["contact_option"]
             category_id = None
@@ -270,6 +271,8 @@ class ContactView(BaseView):
             if category is None:
                 # just log, the thread will be created in main category
                 logger.error(f"Category with ID {category_id} not found.")
+        else if data.get("category") is None:
+            raise ValueError(f"Category ID not selected")
 
         await self.manager.create_thread(user, category=category, interaction=view.interaction)
         self._temp_cached_users.pop(str(user.id), None)
