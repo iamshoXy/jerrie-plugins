@@ -262,7 +262,8 @@ class ContactView(BaseView):
                 if data.get("label") == option.label:
                     category_id = data.get("category")
                     break
-            logger.info(f"Category {category_id}")
+            logger.info(data.get("category"))
+            logger.info(str(category_id))
             if category_id is None:
                 raise ValueError(f"Category ID for {option.label} was not set.")
             category = self.bot.get_channel(int(category_id))
