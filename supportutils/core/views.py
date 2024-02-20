@@ -271,7 +271,7 @@ class ContactView(BaseView):
             if category is None:
                 # just log, the thread will be created in main category
                 logger.error(f"Category with ID {category_id} not found.")
-        else if data.get("category") is None:
+        elif data.get("category") is None:
             raise ValueError(f"Category ID not selected")
 
         await self.manager.create_thread(user, category=category, interaction=view.interaction)
