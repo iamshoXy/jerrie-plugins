@@ -263,15 +263,13 @@ class ContactView(BaseView):
                 if data.get("label") == option.label:
                     category_id = data.get("category")
                     break
-            logger.info(data.get("category"))
-            logger.info(str(category_id))
             if category_id is None:
                 raise ValueError(f"Category ID for {option.label} was not set.")
             category = self.bot.get_channel(int(category_id))
             if category is None:
                 # just log, the thread will be created in main category
                 logger.error(f"Category with ID {category_id} not found.")
-        elif data.get("category") is None:
+        else:
             raise ValueError(f"Category ID not selected")
 
         await self.manager.create_thread(user, category=category, interaction=view.interaction)

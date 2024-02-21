@@ -118,7 +118,7 @@ class SupportUtility(commands.Cog, name=__plugin_name__):
                     "label": subkey.title(),
                     "max_length": Limit.select_placeholder,
                     "required": True,
-                    "default": "test",
+                    "default": view.inputs.get(subkey) or current,
                 }
             else:
                 # select options
@@ -133,7 +133,7 @@ class SupportUtility(commands.Cog, name=__plugin_name__):
                         "label": name.title(),
                         "max_length": length,
                         "required": name in ("label", "category"),
-                        "default": None if name == "category" else view.inputs.get(name),
+                        "default": view.inputs.get(name),
                     }
         elif "embed" in (key, subkey):
             elements = [
