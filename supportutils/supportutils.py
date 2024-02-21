@@ -118,7 +118,7 @@ class SupportUtility(commands.Cog, name=__plugin_name__):
                     "label": subkey.title(),
                     "max_length": Limit.select_placeholder,
                     "required": True,
-                    "default": view.inputs.get(subkey) or current,
+                    "default": "test",
                 }
             else:
                 # select options
